@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF - 8'?>
+            <Log>
+              <Time> 2022 - 08 - 17 13:01:07.440 </Time>
+              <Broker> ACLAP1D </Broker >
+              <ExecutionGroup > IS_OM_01 </ExecutionGroup >
+              <ProcessID> 2440 </ProcessID >
+              <MsgId> 41434c415031443064578216297c4c7a94dfbbe663960c71 </MsgId >
+              <MsgidOrigen> 414d5120514d4c4150324420202020203153e96201dd9744 </MsgidOrigen >
+              <ServiceCode> SRV_L101_FLST_RT_LIM02_MQ </ServiceCode >
+              <FlowName> ace.esb.srv.l101.flst.rt.lim02.mq.MF_SRV_L101_FLST_RT_LIM02_MQ </FlowName >
+              <RequestType> IN_SRV </RequestType >
+              <Message>
+                <Body>
+                  <Message>{ 'Vuelos':[{ 'tip_registro':'UPD','cod_vuelo':'LA2408','cod_aerolinea':'LA','num_vuelo':'2408','tip_ope':'S','tip_trafico':'I','abr_aerolinea':'LATAM','cod_prc_dest':'SJO','dsc_prc_dest':'SAN JOSE','fch_hra_prog':'2022-08-17 13:15:00','fch_hra_est':'2022-08-17 13:15:00','fch_hra_real':'','fch_hra_ult':'2022-08-17 13:15:00','dsc_estado':'FIN EMBARQ','num_term_aeronave':'1','num_term_pasajero':'1','num_faja':'','num_mostrador':'03-22 ','fch_hra_mostrador_ini':'2022-08-16 19:04:00','fch_hra_mostrador_fin':'2022-08-17 18:59:00','num_puerta':'20','num_min_duracion':'230','fch_hra_est_prc_dest':'2022-08-17 16:05:00','log_usr_cre':'UWS_AIS','log_fch_cre':'2022-08-17 13:01:06','log_usr_mod':'UWS_AIS','log_fch_mod':'2022-08-17 13:01:06','log_hostname':'LAP63'}]}</Message >
+                </Body >
+              </Message >
+              <Flows />
+              <SensitiveData />
+            </Log>

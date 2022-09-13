@@ -1,0 +1,54 @@
+INFO  2022-09-12 12:13:05,283 [1]   436ms Service1               ScheduleService    - WindowsService Mode: INTERVALSECONDS 
+INFO  2022-09-12 12:13:05,352 [1]   504ms Service1               ScheduleService    - WindowsService scheduled to run after:  day(s) 0 hour(s) 0 minute(s) 1 seconds(s) 
+INFO  2022-09-12 12:13:05,355 [1]   507ms Service1               OnStop             - WindowsService stopped 
+INFO  2022-09-12 12:13:32,926 [1]   411ms FileMetodo             ObtenerPendientes  - *****Inicio de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220907162904.txt*****
+INFO  2022-09-12 12:13:33,989 [1]  1475ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,005 [1]  1491ms MetodoBD               InsertLogVuelo     - *****Insercción existosa de LogVuelo*****
+INFO  2022-09-12 12:13:34,010 [1]  1496ms FileMetodo             erArchivoProcesado - *****Mover archivo a carperta Procesados/*****
+INFO  2022-09-12 12:13:34,019 [1]  1504ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,033 [1]  1518ms MetodoBD               InsertVuelo        - *****Inserccion existosa de Vuelo*****
+INFO  2022-09-12 12:13:34,035 [1]  1520ms MetodoBD               InsertVuelo        - Estado: FIN EMBARQCod. Vuelo: LA2408  T. Operacion: S T. Trafico: I F. Programada: 17/08/2022 13:15:00
+INFO  2022-09-12 12:13:34,036 [1]  1521ms FileMetodo             ObtenerPendientes  - *****Fin de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220907162904.txt*****
+INFO  2022-09-12 12:13:34,036 [1]  1521ms FileMetodo             ObtenerPendientes  - *****Inicio de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220907163333.txt*****
+INFO  2022-09-12 12:13:34,037 [1]  1522ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,039 [1]  1524ms MetodoBD               InsertLogVuelo     - *****Insercción existosa de LogVuelo*****
+INFO  2022-09-12 12:13:34,041 [1]  1526ms FileMetodo             erArchivoProcesado - *****Mover archivo a carperta Procesados/*****
+INFO  2022-09-12 12:13:34,042 [1]  1527ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,051 [1]  1536ms MetodoBD               InsertVuelo        - *****Inserccion existosa de Vuelo*****
+INFO  2022-09-12 12:13:34,052 [1]  1537ms MetodoBD               InsertVuelo        - Estado: FIN EMBARQCod. Vuelo: LA2408  T. Operacion: S T. Trafico: I F. Programada: 17/08/2022 13:15:00
+INFO  2022-09-12 12:13:34,053 [1]  1538ms FileMetodo             ObtenerPendientes  - *****Fin de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220907163333.txt*****
+INFO  2022-09-12 12:13:34,063 [1]  1548ms FileMetodo             ObtenerPendientes  - *****Inicio de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912112801.txt*****
+INFO  2022-09-12 12:13:34,071 [1]  1556ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,075 [1]  1560ms MetodoBD               InsertLogVuelo     - *****Insercción existosa de LogVuelo*****
+INFO  2022-09-12 12:13:34,091 [1]  1576ms FileMetodo             erArchivoProcesado - *****Mover archivo a carperta Procesados/*****
+INFO  2022-09-12 12:13:34,092 [1]  1577ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,102 [1]  1587ms MetodoBD               InsertVuelo        - *****Inserccion existosa de Vuelo*****
+INFO  2022-09-12 12:13:34,103 [1]  1588ms MetodoBD               InsertVuelo        - Estado: FIN EMBARQCod. Vuelo: LA2408  T. Operacion: S T. Trafico: I F. Programada: 17/08/2022 13:15:00
+INFO  2022-09-12 12:13:34,104 [1]  1589ms FileMetodo             ObtenerPendientes  - *****Fin de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912112801.txt*****
+INFO  2022-09-12 12:13:34,105 [1]  1590ms FileMetodo             ObtenerPendientes  - *****Inicio de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912112812.txt*****
+INFO  2022-09-12 12:13:34,111 [1]  1596ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,160 [1]  1646ms MetodoBD               InsertLogVuelo     - *****Insercción existosa de LogVuelo*****
+INFO  2022-09-12 12:13:34,163 [1]  1649ms FileMetodo             erArchivoProcesado - *****Mover archivo a carperta Procesados/*****
+INFO  2022-09-12 12:13:34,164 [1]  1650ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,268 [1]  1754ms MetodoBD               InsertVuelo        - *****Inserccion existosa de Vuelo*****
+INFO  2022-09-12 12:13:34,268 [1]  1754ms MetodoBD               InsertVuelo        - Estado: PROGRAMADOCod. Vuelo: LA2408  T. Operacion: L T. Trafico: I F. Programada: 17/08/2022 13:15:00
+INFO  2022-09-12 12:13:34,269 [1]  1755ms FileMetodo             ObtenerPendientes  - *****Fin de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912112812.txt*****
+INFO  2022-09-12 12:13:34,269 [1]  1755ms FileMetodo             ObtenerPendientes  - *****Inicio de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912112832.txt*****
+INFO  2022-09-12 12:13:34,270 [1]  1756ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,301 [1]  1787ms MetodoBD               InsertLogVuelo     - *****Insercción existosa de LogVuelo*****
+INFO  2022-09-12 12:13:34,303 [1]  1789ms FileMetodo             erArchivoProcesado - *****Mover archivo a carperta Procesados/*****
+INFO  2022-09-12 12:13:34,307 [1]  1793ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,334 [1]  1820ms MetodoBD               InsertVuelo        - *****Inserccion existosa de Vuelo*****
+INFO  2022-09-12 12:13:34,335 [1]  1821ms MetodoBD               InsertVuelo        - Estado: DEMORADOCod. Vuelo: LA2408  T. Operacion: L T. Trafico: I F. Programada: 17/08/2022 13:15:00
+INFO  2022-09-12 12:13:34,336 [1]  1822ms FileMetodo             ObtenerPendientes  - *****Fin de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912112832.txt*****
+INFO  2022-09-12 12:13:34,336 [1]  1822ms FileMetodo             ObtenerPendientes  - *****Inicio de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912114719.txt*****
+INFO  2022-09-12 12:13:34,337 [1]  1823ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,339 [1]  1825ms MetodoBD               InsertLogVuelo     - *****Insercción existosa de LogVuelo*****
+INFO  2022-09-12 12:13:34,341 [1]  1827ms FileMetodo             erArchivoProcesado - *****Mover archivo a carperta Procesados/*****
+INFO  2022-09-12 12:13:34,342 [1]  1828ms MetodoBD               conectar           - *****Conexion existosa a la base de datos*****
+INFO  2022-09-12 12:13:34,344 [1]  1830ms MetodoBD               InsertVuelo        - *****Inserccion existosa de Vuelo*****
+INFO  2022-09-12 12:13:34,347 [1]  1833ms MetodoBD               InsertVuelo        - Estado: PROGRAMADOCod. Vuelo: LA2412  T. Operacion: L T. Trafico: I F. Programada: 12/09/2022 10:47:00
+INFO  2022-09-12 12:13:34,349 [1]  1835ms FileMetodo             ObtenerPendientes  - *****Fin de proceso de log:  SRV_L101_FLST_RT_LIM02_MQ_info_20220912114719.txt*****
+INFO  2022-09-12 12:13:34,350 [1]  1836ms Service1               ScheduleService    - WindowsService Mode: INTERVALSECONDS 
+INFO  2022-09-12 12:13:34,350 [1]  1836ms Service1               ScheduleService    - WindowsService scheduled to run after:  day(s) 0 hour(s) 0 minute(s) 1 seconds(s) 
+INFO  2022-09-12 12:13:34,351 [1]  1837ms Service1               OnStop             - WindowsService stopped 
