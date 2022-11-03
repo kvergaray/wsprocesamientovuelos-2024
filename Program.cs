@@ -35,12 +35,13 @@ namespace MensajeriaService
         private static void RunAsConsole()
         {
             Service1 serv = new Service1();
-            serv.StartService();
+            //serv.StartService();
+            serv.Working();
 
             Console.WriteLine("Running service as console. Press any key to stop.");
             Console.ReadLine();
 
-            serv.Stop();
+            //serv.Stop();
         }
         private static void RunAsService()
         {

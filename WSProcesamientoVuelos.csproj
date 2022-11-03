@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="DataAccess\MetodoBD.cs" />
     <Compile Include="DataAccess\FileMetodo.cs" />
+    <Compile Include="DataAccess\ProcesamientoMetodo.cs" />
+    <Compile Include="Entity\logsVueloEntity.cs" />
     <Compile Include="Entity\vueloResponse.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>

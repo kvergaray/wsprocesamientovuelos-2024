@@ -37,14 +37,22 @@ namespace MensajeriaService
             this.Schedular.Dispose();
         }
 
+        public void Working()
+        {
+            FileMetodo ofmetodo = new FileMetodo();
+            ProcesamientoMetodo opmetodo = new ProcesamientoMetodo();
+
+            ofmetodo.ObtenerPendientes();
+
+            opmetodo.InsertVuelos();
+        }
+
         private Timer Schedular;
 
         public void ScheduleService()
         {
             try
             {
-                FileMetodo oMetodosBD = new FileMetodo();
-                oMetodosBD.ObtenerPendientes();
 
                 Schedular = new Timer(new TimerCallback(SchedularCallback));
                 string mode = ConfigurationManager.AppSettings["Mode"].ToUpper();
@@ -118,7 +126,7 @@ namespace MensajeriaService
         private void SchedularCallback(object e)
         {
             logger.Info("WindowsService: Entro a ejecutar método");
-            
+            this.Working();
             this.ScheduleService();
         }
 

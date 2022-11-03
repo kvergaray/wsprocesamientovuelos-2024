@@ -60,13 +60,10 @@ namespace WSProcesamientoVuelos.DataAccess
                     var dt = DateTime.Now;
                     MetodoBD ometodo = new MetodoBD();
                     int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
-                    if (result == 1)
+                    if (result != 0)
                     {
-                        bool move = MoverArchivoProcesado(fullPath, filename);
-                        if (move == true)
-                        {
-                            ometodo.InsertVuelo(vuelo);
-                        }
+                        MoverArchivoProcesado(fullPath, filename);
+
                     }
                 }
             }
@@ -82,14 +79,13 @@ namespace WSProcesamientoVuelos.DataAccess
                     stream.Close();
             }
         }
-        public bool MoverArchivoProcesado(string sourceFile, string filename)
+        public void MoverArchivoProcesado(string sourceFile, string filename)
         {
             try
             {
                 string destinationFile = detinationPath + filename;
                 System.IO.File.Move(sourceFile, destinationFile);
                 logger.Info("*****Mover archivo a carperta Procesados/*****");
-                return true;
 
             }
             catch (Exception e)
@@ -97,7 +93,6 @@ namespace WSProcesamientoVuelos.DataAccess
                 logger.Error("*****Error al mover archivo de pendientes/ a procesados/*****");
                 logger.Error("Message: " + e.Message.ToString());
                 logger.Error(e.ToString());
-                return false;
             }
         }
 

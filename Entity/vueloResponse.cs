@@ -24,8 +24,8 @@ namespace WSProcesamientoVuelos.Entity
         public string cod_prc_dest { get; set; }
         public string dsc_prc_dest { get; set; }
         public DateTime fch_hra_prog { get; set; }
-        public string fch_hra_est { get; set; }
-        public string fch_hra_real { get; set; } 
+        public string fch_hra_est { get; set; } 
+        public string fch_hra_real { get; set; }
         public DateTime fch_hra_ult { get; set; }
         public string dsc_estado { get; set; }
         public string num_term_aeronave { get; set; }
