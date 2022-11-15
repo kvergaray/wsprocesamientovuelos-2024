@@ -15,6 +15,6 @@ namespace WSProcesamientoVuelos.Entity
         public DateTime fch_hra_prog { get; set; }
         public DateTime fch_hra_ult { get; set; }
         public string dsc_estado { get; set; }
-        public string num_puerta { get; set; }
+        public int IDPuerta { get; set; }
     }
 }

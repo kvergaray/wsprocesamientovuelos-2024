@@ -47,13 +47,7 @@ namespace WSProcesamientoVuelos.DataAccess
                 string readTextold = File.ReadAllText(fullPath);
                 string readText = readTextold.Trim();
                 var doc = new XmlDocument();
-                doc.LoadXml(readText);
-
-                var json = JsonConvert.SerializeXmlNode(doc);
-                var des = JsonConvert.DeserializeObject<LogInfo>(json);
-
-                var vjson = JsonConvert.DeserializeObject<VueloResponse>(des.Log.Message.Body.Message);
-
+                var vjson = JsonConvert.DeserializeObject<VueloResponse>(readText);
                 
                 foreach (var vuelo in vjson.Vuelos)
                 {
@@ -62,10 +56,12 @@ namespace WSProcesamientoVuelos.DataAccess
                     int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
                     if (result != 0)
                     {
-                        MoverArchivoProcesado(fullPath, filename);
+                        logger.Info("*****ID LogVuelo: " + result +" *****");
 
                     }
+
                 }
+                MoverArchivoProcesado(fullPath, filename);
             }
             catch (Exception ex)
             {

@@ -55,6 +55,7 @@ namespace WSProcesamientoVuelos.DataAccess
             DateTime log_fch_cre = Convert.ToDateTime(oVuelo.log_fch_cre);
             DateTime log_fch_mod = Convert.ToDateTime(oVuelo.log_fch_mod);
 
+            oVuelo.num_puerta = oVuelo.num_puerta == "" ? "SNP" : oVuelo.num_puerta;
             using (conexion)
             {
                 try
@@ -92,7 +93,8 @@ namespace WSProcesamientoVuelos.DataAccess
                     comando.Parameters.AddWithValue("@log_hostname", oVuelo.log_hostname);
                     comando.Parameters.AddWithValue("@name_file", filename);
                     comando.Parameters.AddWithValue("@fch_proceso", fch_proceso);
-                    
+                    comando.Parameters.AddWithValue("@tip_mq", "TiempoReal");
+
                     SqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
@@ -101,8 +103,6 @@ namespace WSProcesamientoVuelos.DataAccess
                             result = Convert.ToInt32(reader[0]);
                         }
                     }
-                    conexion.Close();
-
                     conexion.Close();
                     logger.Info("*****Numero de registro: *****" + result);
                     return result;
@@ -143,7 +143,7 @@ namespace WSProcesamientoVuelos.DataAccess
                             tip_trafico = Convert.ToString(reader[3]),
                             fch_hra_prog = Convert.ToDateTime(reader[4]),
                             dsc_estado = Convert.ToString(reader[5]),
-                            num_puerta = Convert.ToString(reader[6]),
+                            IDPuerta = Convert.ToInt32(reader[6]),
                             fch_hra_ult = Convert.ToDateTime(reader[7])
                             });  
                         }
@@ -181,7 +181,6 @@ namespace WSProcesamientoVuelos.DataAccess
                 if (minute <= 15)
                 {
                     redondeo = minute;
-                    //new valor minute
                     fch_hra_ult = oVuelo.fch_hra_ult.AddMinutes(-redondeo);
                 }
                 else
@@ -217,8 +216,7 @@ namespace WSProcesamientoVuelos.DataAccess
 
             //DateTime fch_hra_encendido = oVuelo.fch_hra_ult.AddHours(-2);
             //DateTime fch_hra_apagado = oVuelo.fch_hra_ult.AddMinutes(30);
-
-            //cada 30 min
+            
             using (conexion)
             {
                 try
@@ -232,14 +230,17 @@ namespace WSProcesamientoVuelos.DataAccess
                     comando.Parameters.AddWithValue("@tip_trafico", oVuelo.tip_trafico);
                     comando.Parameters.AddWithValue("@fch_hra_prog", oVuelo.fch_hra_prog);
                     comando.Parameters.AddWithValue("@dsc_estado", oVuelo.dsc_estado);
-                    comando.Parameters.AddWithValue("@num_puerta", oVuelo.num_puerta);
+                    comando.Parameters.AddWithValue("@IDPuerta", oVuelo.IDPuerta);
                     comando.Parameters.AddWithValue("@fch_hra_ult", fch_hra_ult);
                     comando.Parameters.AddWithValue("@idLogVuelo", oVuelo.ID);
 
                     comando.ExecuteNonQuery();
                     logger.Info("*****Inserccion existosa de Vuelo*****");
+
+
+
                     logger.Info("Estado: " + oVuelo.dsc_estado + "  Cod. Vuelo: " + oVuelo.cod_vuelo + "  T. Operacion: " + oVuelo.tip_ope);
-                    logger.Info("  T. Trafico: " + oVuelo.tip_trafico + "  F. Programada: " + oVuelo.fch_hra_prog);
+                    logger.Info("  T. Trafico: " + oVuelo.tip_trafico + "  F. Programada: " + oVuelo.fch_hra_prog + "  F. Ultima: " + oVuelo.fch_hra_ult);
 
                     conexion.Close();
                 }

@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\CiclicoMetodo.cs" />
     <Compile Include="DataAccess\MetodoBD.cs" />
     <Compile Include="DataAccess\FileMetodo.cs" />
     <Compile Include="DataAccess\ProcesamientoMetodo.cs" />
@@ -91,6 +92,7 @@
     </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
