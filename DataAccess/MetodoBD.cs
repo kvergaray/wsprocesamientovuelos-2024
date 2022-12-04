@@ -39,13 +39,13 @@ namespace WSProcesamientoVuelos.DataAccess
         public int InsertLogVuelo(VueloBody oVuelo, string filename, string fullPath, DateTime fch_proceso)
         {
             int result = 0;
-            oVuelo.fch_hra_real = oVuelo.fch_hra_real == "" ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_real;
-            oVuelo.fch_hra_est = oVuelo.fch_hra_est == "" ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_est;
-            oVuelo.fch_hra_mostrador_ini = oVuelo.fch_hra_mostrador_ini == "" ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_mostrador_ini;
-            oVuelo.fch_hra_mostrador_fin = oVuelo.fch_hra_mostrador_fin == "" ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_mostrador_fin;
-            oVuelo.fch_hra_est_prc_dest = oVuelo.fch_hra_est_prc_dest == "" ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_est_prc_dest;
-            oVuelo.log_fch_cre = oVuelo.log_fch_cre == "" ? "1900-01-01 00:00:00.000" : oVuelo.log_fch_cre;
-            oVuelo.log_fch_mod = oVuelo.log_fch_mod == "" ? "1900-01-01 00:00:00.000" : oVuelo.log_fch_mod;
+            oVuelo.fch_hra_real = oVuelo.fch_hra_real == "" || oVuelo.fch_hra_real == null ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_real;
+            oVuelo.fch_hra_est = oVuelo.fch_hra_est == "" || oVuelo.fch_hra_est == null? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_est;
+            oVuelo.fch_hra_mostrador_ini = oVuelo.fch_hra_mostrador_ini == "" || oVuelo.fch_hra_mostrador_ini == null ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_mostrador_ini;
+            oVuelo.fch_hra_mostrador_fin = oVuelo.fch_hra_mostrador_fin == "" || oVuelo.fch_hra_mostrador_fin == null ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_mostrador_fin;
+            oVuelo.fch_hra_est_prc_dest = oVuelo.fch_hra_est_prc_dest == "" || oVuelo.fch_hra_est_prc_dest == null ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_est_prc_dest;
+            oVuelo.log_fch_cre = oVuelo.log_fch_cre == "" || oVuelo.log_fch_cre == null ? "1900-01-01 00:00:00.000" : oVuelo.log_fch_cre;
+            oVuelo.log_fch_mod = oVuelo.log_fch_mod == "" || oVuelo.log_fch_mod == null ? "1900-01-01 00:00:00.000" : oVuelo.log_fch_mod;
 
             DateTime fch_hra_real = Convert.ToDateTime(oVuelo.fch_hra_real);
             DateTime fch_hra_est = Convert.ToDateTime(oVuelo.fch_hra_est);
@@ -55,7 +55,7 @@ namespace WSProcesamientoVuelos.DataAccess
             DateTime log_fch_cre = Convert.ToDateTime(oVuelo.log_fch_cre);
             DateTime log_fch_mod = Convert.ToDateTime(oVuelo.log_fch_mod);
 
-            oVuelo.num_puerta = oVuelo.num_puerta == "" ? "SNP" : oVuelo.num_puerta;
+            oVuelo.num_puerta = oVuelo.num_puerta == "" || oVuelo.num_puerta == null ? "SNP" : oVuelo.num_puerta;
             using (conexion)
             {
                 try

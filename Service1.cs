@@ -58,7 +58,6 @@ namespace MensajeriaService
 
                 Schedular = new Timer(new TimerCallback(SchedularCallback));
                 string mode = ConfigurationManager.AppSettings["Mode"].ToUpper();
-                //logger.Info("WindowsService Mode: " + mode + " ");
 
                 //Set the Default Time.
                 DateTime scheduledTime = DateTime.MinValue;
@@ -116,19 +115,21 @@ namespace MensajeriaService
             catch (Exception ex)
             {
                 logger.Info("WindowsService Error on:  " + ex.Message + ex.StackTrace);
-
-                //Stop the Windows Service.
-                using (System.ServiceProcess.ServiceController serviceController = new System.ServiceProcess.ServiceController("Continental.WindowsService"))
-                {
-                    serviceController.Stop();
-                }
             }
         }
 
         private void SchedularCallback(object e)
         {
             logger.Info("WindowsService: Entro a ejecutar método");
-            this.Working();
+            try
+            {
+                Working();
+            }
+            catch (Exception ex)
+            {
+                logger.Error("WindowsService Error on:" + ex.Message + ex.StackTrace);
+            }
+
             this.ScheduleService();
         }
 
@@ -191,20 +192,22 @@ namespace MensajeriaService
             catch (Exception ex)
             {
                 logger.Info("WindowsService Error on:  " + ex.Message + ex.StackTrace);
-
-                //Stop the Windows Service.
-                using (System.ServiceProcess.ServiceController serviceController = new System.ServiceProcess.ServiceController("Continental.WindowsService"))
-                {
-                    serviceController.Stop();
-                }
             }
         }
 
         private void SchedularCallbackClean(object e)
         {
             logger.Info("WindowsService: Entro a ejecutar método");
-            CiclicoMetodo ociclico = new CiclicoMetodo();
-            ociclico.ciclico24hrs();
+            try
+            {
+                CiclicoMetodo ociclico = new CiclicoMetodo();
+                ociclico.ciclico24hrs();
+            }
+            catch (Exception ex)
+            {
+                logger.Error("WindowsService Error on:" + ex.Message + ex.StackTrace);
+            }
+            
             this.ScheduleServiceClean();
         }
     }

@@ -42,29 +42,38 @@ namespace WSProcesamientoVuelos.DataAccess
         public void serializarDocumento(string fullPath, string filename)
         {
             StreamWriter stream = null;
+            VueloResponse vjson;
             try
             {
                 string readTextold = File.ReadAllText(fullPath);
                 string readText = readTextold.Trim();
                 var doc = new XmlDocument();
-                var vjson = JsonConvert.DeserializeObject<VueloResponse>(readText);
-                
-                foreach (var vuelo in vjson.Vuelos)
+                if (!readText.Contains(@"""fch_hra_prog"": """"") || !readText.Contains(@"""fch_hra_prog"": "" """)) //Validar el vuelo contenga informacion a procesar
                 {
-                    var dt = DateTime.Now;
-                    MetodoBD ometodo = new MetodoBD();
-                    int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
-                    if (result != 0)
+                     vjson = JsonConvert.DeserializeObject<VueloResponse>(readText);
+
+                    foreach (var vuelo in vjson.Vuelos)
                     {
-                        logger.Info("*****ID LogVuelo: " + result +" *****");
+
+                        var dt = DateTime.Now;
+                        MetodoBD ometodo = new MetodoBD();
+                        int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
+                        if (result != 0)
+                        {
+                            logger.Info("*****ID LogVuelo: " + result + " *****");
+
+                        }
 
                     }
 
+                    MoverArchivoProcesado(fullPath, filename);
                 }
-                MoverArchivoProcesado(fullPath, filename);
+                else { MoverArchivoProcesado(fullPath, "NO SERIALIZADO - " + filename); }
+                
             }
             catch (Exception ex)
             {
+                MoverArchivoProcesado(fullPath, "NO SERIALIZADO - " + filename);
                 logger.Error("*****Error al serializar file*****");
                 logger.Error("Message: " + ex.Message.ToString());
                 logger.Error(ex.ToString());
