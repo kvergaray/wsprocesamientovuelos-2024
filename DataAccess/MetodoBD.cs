@@ -158,7 +158,7 @@ namespace WSProcesamientoVuelos.DataAccess
                 {
                     conexion.Close();
                     
-                    logger.Error("*****Error en InsertVuelo()*****");
+                    logger.Error("*****Error en GetLogVuelos()*****");
                     logger.Error("Message: " + ex.Message.ToString());
                     logger.Error(ex.ToString());
                     return olentity;
