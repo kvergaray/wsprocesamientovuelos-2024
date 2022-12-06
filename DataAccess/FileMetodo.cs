@@ -47,8 +47,8 @@ namespace WSProcesamientoVuelos.DataAccess
             {
                 string readTextold = File.ReadAllText(fullPath);
                 string readText = readTextold.Trim();
-                var doc = new XmlDocument();
-                if (!readText.Contains(@"""fch_hra_prog"": """"") || !readText.Contains(@"""fch_hra_prog"": "" """)) //Validar el vuelo contenga informacion a procesar
+
+                if (!readText.Contains("\"fch_hra_prog\":\"\"")) //Validar el vuelo contenga informacion a procesar
                 {
                      vjson = JsonConvert.DeserializeObject<VueloResponse>(readText);
 
