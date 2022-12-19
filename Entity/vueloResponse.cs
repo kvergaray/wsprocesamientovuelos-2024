@@ -26,7 +26,7 @@ namespace WSProcesamientoVuelos.Entity
         public DateTime fch_hra_prog { get; set; }
         public string fch_hra_est { get; set; } 
         public string fch_hra_real { get; set; }
-        public DateTime fch_hra_ult { get; set; }
+        public string fch_hra_ult { get; set; }
         public string dsc_estado { get; set; }
         public string num_term_aeronave { get; set; }
         public string num_term_pasajero { get; set; }

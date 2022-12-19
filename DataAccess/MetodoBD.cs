@@ -39,6 +39,7 @@ namespace WSProcesamientoVuelos.DataAccess
         public int InsertLogVuelo(VueloBody oVuelo, string filename, string fullPath, DateTime fch_proceso)
         {
             int result = 0;
+            oVuelo.fch_hra_ult = oVuelo.fch_hra_ult == "" || oVuelo.fch_hra_ult == null ? oVuelo.fch_hra_prog.ToString() : oVuelo.fch_hra_ult;
             oVuelo.fch_hra_real = oVuelo.fch_hra_real == "" || oVuelo.fch_hra_real == null ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_real;
             oVuelo.fch_hra_est = oVuelo.fch_hra_est == "" || oVuelo.fch_hra_est == null? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_est;
             oVuelo.fch_hra_mostrador_ini = oVuelo.fch_hra_mostrador_ini == "" || oVuelo.fch_hra_mostrador_ini == null ? "1900-01-01 00:00:00.000" : oVuelo.fch_hra_mostrador_ini;
@@ -47,6 +48,7 @@ namespace WSProcesamientoVuelos.DataAccess
             oVuelo.log_fch_cre = oVuelo.log_fch_cre == "" || oVuelo.log_fch_cre == null ? "1900-01-01 00:00:00.000" : oVuelo.log_fch_cre;
             oVuelo.log_fch_mod = oVuelo.log_fch_mod == "" || oVuelo.log_fch_mod == null ? "1900-01-01 00:00:00.000" : oVuelo.log_fch_mod;
 
+            DateTime fch_hra_ult = Convert.ToDateTime(oVuelo.fch_hra_ult);
             DateTime fch_hra_real = Convert.ToDateTime(oVuelo.fch_hra_real);
             DateTime fch_hra_est = Convert.ToDateTime(oVuelo.fch_hra_est);
             DateTime fch_hra_mostrador_ini = Convert.ToDateTime(oVuelo.fch_hra_mostrador_ini);
@@ -75,7 +77,7 @@ namespace WSProcesamientoVuelos.DataAccess
                     comando.Parameters.AddWithValue("@fch_hra_prog", oVuelo.fch_hra_prog);
                     comando.Parameters.AddWithValue("@fch_hra_est", fch_hra_est);
                     comando.Parameters.AddWithValue("@fch_hra_real", fch_hra_real);
-                    comando.Parameters.AddWithValue("@Fch_Hra_Ult", oVuelo.fch_hra_ult);
+                    comando.Parameters.AddWithValue("@Fch_Hra_Ult", fch_hra_ult);
                     comando.Parameters.AddWithValue("@dsc_estado", oVuelo.dsc_estado);
                     comando.Parameters.AddWithValue("@num_term_aeronave", oVuelo.num_term_aeronave);
                     comando.Parameters.AddWithValue("@num_term_pasajero", oVuelo.num_term_pasajero);

@@ -42,38 +42,25 @@ namespace WSProcesamientoVuelos.DataAccess
         public void serializarDocumento(string fullPath, string filename)
         {
             StreamWriter stream = null;
-            VueloResponse vjson;
+            
             try
             {
                 string readTextold = File.ReadAllText(fullPath);
                 string readText = readTextold.Trim();
 
-                if (!readText.Contains("\"fch_hra_prog\":\"\"")) //Validar el vuelo contenga informacion a procesar
+                if (readText.Contains("\"fch_hra_prog\":\"\""))
                 {
-                     vjson = JsonConvert.DeserializeObject<VueloResponse>(readText);
 
-                    foreach (var vuelo in vjson.Vuelos)
-                    {
-
-                        var dt = DateTime.Now;
-                        MetodoBD ometodo = new MetodoBD();
-                        int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
-                        if (result != 0)
-                        {
-                            logger.Info("*****ID LogVuelo: " + result + " *****");
-
-                        }
-
-                    }
-
+                    MoverArchivoProcesado(fullPath, "NO SERIALIZADO - " + filename);
+                }
+                else { 
+                    ConvertJsonaVuelo(readText, fullPath, filename);
                     MoverArchivoProcesado(fullPath, filename);
                 }
-                else { MoverArchivoProcesado(fullPath, "NO SERIALIZADO - " + filename); }
-                
             }
             catch (Exception ex)
             {
-                MoverArchivoProcesado(fullPath, "NO SERIALIZADO - " + filename);
+                MoverArchivoProcesado(fullPath, "ERROR - NO SERIALIZADO - " + filename);
                 logger.Error("*****Error al serializar file*****");
                 logger.Error("Message: " + ex.Message.ToString());
                 logger.Error(ex.ToString());
@@ -84,6 +71,27 @@ namespace WSProcesamientoVuelos.DataAccess
                     stream.Close();
             }
         }
+
+        public void ConvertJsonaVuelo(string readText, string fullPath, string filename)
+        {
+            VueloResponse vjson;
+            vjson = JsonConvert.DeserializeObject<VueloResponse>(readText);
+
+            foreach (var vuelo in vjson.Vuelos)
+            {
+
+                var dt = DateTime.Now;
+                MetodoBD ometodo = new MetodoBD();
+                int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
+                if (result != 0)
+                {
+                    logger.Info("*****ID LogVuelo: " + result + " *****");
+
+                }
+
+            }
+        }
+
         public void MoverArchivoProcesado(string sourceFile, string filename)
         {
             try
