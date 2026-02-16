@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\CiclicoMetodo.cs" />
+    <Compile Include="DataAccess\XmlMetodo.cs" />
     <Compile Include="DataAccess\MetodoBD.cs" />
     <Compile Include="DataAccess\FileMetodo.cs" />
     <Compile Include="DataAccess\ProcesamientoMetodo.cs" />

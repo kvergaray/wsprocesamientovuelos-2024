@@ -42,6 +42,10 @@ namespace WSProcesamientoVuelos.Entity
         public string log_usr_mod { get; set; }
         public string log_fch_mod { get; set; }
         public string log_hostname { get; set; }
+
+        // Nuevos campos para almacenar filename y fullPath
+        public string Filename { get; set; }
+        public string FullPath { get; set; }
     }
 
     public class Info

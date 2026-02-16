@@ -9,14 +9,17 @@ namespace WSProcesamientoVuelos.DataAccess
 {
     public class ProcesamientoMetodo
     {
-        MetodoBD ometodo = new MetodoBD();
+        // MetodoBD ometodo = new MetodoBD();
+        XmlMetodo ometodo = new XmlMetodo();
 
         public void InsertVuelos()
         {
             List<logsVueloEntity> result = ometodo.GetLogVuelos();
             foreach (var vuelo in result)
             {
-                ometodo.InsertVuelo(vuelo);
+                //ometodo.InsertVuelo(vuelo);
+                ometodo.InsertVueloXML(vuelo);
+                
             }
         }  
     }

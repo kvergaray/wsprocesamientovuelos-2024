@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using WSProcesamientoVuelos.Entity;
 
 namespace WSProcesamientoVuelos.DataAccess
@@ -259,6 +261,116 @@ namespace WSProcesamientoVuelos.DataAccess
                 }
             }
         }
+
+
+        public static void ConvertXml(logsVueloEntity oVuelo)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(logsVueloEntity));
+            string path = System.Configuration.ConfigurationManager.AppSettings["xmlPath"];
+
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                serializer.Serialize(writer, oVuelo);
+            }
+
+            Console.WriteLine("Objeto guardado en XML.");
+        }
+
+
+        public void InsertVueloXML (logsVueloEntity oVuelo)
+        {
+            DateTime fch_hra_ult = new DateTime();
+            //CALCULO DE REDONDEO
+            int redondeo;
+
+            int minute = oVuelo.fch_hra_ult.Minute;
+            int second = oVuelo.fch_hra_ult.Second;
+
+
+            if (minute <= 30)
+            {
+                if (minute <= 15)
+                {
+                    redondeo = minute;
+                    fch_hra_ult = oVuelo.fch_hra_ult.AddMinutes(-redondeo);
+                }
+                else
+                {
+                    redondeo = 30 - minute;
+                    fch_hra_ult = oVuelo.fch_hra_ult.AddMinutes(redondeo);
+                }
+
+            }
+            else
+            {
+                if (minute >= 30)
+                {
+                    if (minute >= 45)
+                    {
+                        redondeo = 60 - minute;
+                        fch_hra_ult = oVuelo.fch_hra_ult.AddMinutes(redondeo);
+
+                    }
+                    else
+                    {
+                        redondeo = minute - 30;
+                        fch_hra_ult = oVuelo.fch_hra_ult.AddMinutes(-redondeo);
+                    }
+
+                }
+            }
+            if (second != 0)
+            {
+                fch_hra_ult = fch_hra_ult.AddSeconds((60 - second));
+                fch_hra_ult = fch_hra_ult.AddMinutes(-1);
+            }
+
+            //DateTime fch_hra_encendido = oVuelo.fch_hra_ult.AddHours(-2);
+            //DateTime fch_hra_apagado = oVuelo.fch_hra_ult.AddMinutes(30);
+            ConvertXml(oVuelo);
+
+            /*using (conexion)
+            {
+                try
+                {
+                    conectar();
+                    SqlCommand comando = new SqlCommand("sp_InsertVuelo", conexion);
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    comando.Parameters.AddWithValue("@cod_vuelo", oVuelo.cod_vuelo);
+                    comando.Parameters.AddWithValue("@tip_ope", oVuelo.tip_ope);
+                    comando.Parameters.AddWithValue("@tip_trafico", oVuelo.tip_trafico);
+                    comando.Parameters.AddWithValue("@fch_hra_prog", oVuelo.fch_hra_prog);
+                    comando.Parameters.AddWithValue("@dsc_estado", oVuelo.dsc_estado);
+                    comando.Parameters.AddWithValue("@IDPuerta", oVuelo.IDPuerta);
+                    comando.Parameters.AddWithValue("@fch_hra_ult", fch_hra_ult);
+                    comando.Parameters.AddWithValue("@idLogVuelo", oVuelo.ID);
+
+                    comando.ExecuteNonQuery();
+                    logger.Info("*****Inserccion existosa de Vuelo*****");
+
+
+
+                    logger.Info("Estado: " + oVuelo.dsc_estado + "  Cod. Vuelo: " + oVuelo.cod_vuelo + "  T. Operacion: " + oVuelo.tip_ope);
+                    logger.Info("  T. Trafico: " + oVuelo.tip_trafico + "  F. Programada: " + oVuelo.fch_hra_prog + "  F. Ultima: " + oVuelo.fch_hra_ult);
+
+                    conexion.Close();
+                }
+                catch (Exception ex)
+                {
+                    conexion.Close();
+                    logger.Error("*****Error en InsertVuelo()*****");
+                    logger.Error("Message: " + ex.Message.ToString());
+                    logger.Error(ex.ToString());
+                }
+                finally
+                {
+
+                }
+            }*/
+        }
+
+
 
     }
 }

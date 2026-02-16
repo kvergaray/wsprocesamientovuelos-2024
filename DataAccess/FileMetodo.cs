@@ -81,7 +81,7 @@ namespace WSProcesamientoVuelos.DataAccess
             {
 
                 var dt = DateTime.Now;
-                MetodoBD ometodo = new MetodoBD();
+                XmlMetodo ometodo = new XmlMetodo();
                 int result = ometodo.InsertLogVuelo(vuelo, filename, fullPath, dt);
                 if (result != 0)
                 {
